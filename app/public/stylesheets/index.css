@@ -10,8 +10,7 @@
   ". . . . ."
   ". p . . ."". p . . ."". p . . ."
   ". . . . ."
-  ". button . . ."
-  ". . . . ."". . . . .";
+  ". button . . .";
 }
 .intro h2{
   grid-area: h2;
@@ -29,11 +28,11 @@
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(12, 1fr);
   grid-template-areas: 
-    ". . . . ."". . . . ."
+    ". . . . ."
     ". h2 h2 h2 ."
     " . p p p ."
-    " . bests bests bests ."
-    ". . . . ."". . . . .";
+    " . bests bests bests ."" . bests bests bests ."" . bests bests bests ."" . bests bests bests ."
+    " . bests bests bests ."" . bests bests bests ."" . bests bests bests .";
 }
 .best h2{
   grid-area: h2;
