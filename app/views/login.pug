@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .main
+    .loginbox
+      h2 Login
+      input(type="text", name="ID", placeholder="ID")
+      input(type="password", name="password", placeholder="Password")
+      button Log in
+      p Don't you have an account? 
+        a(href="/signup") Sign up
+  link(rel='stylesheet', href='/stylesheets/login.css')

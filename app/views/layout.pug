@@ -2,6 +2,23 @@ doctype html
 html
   head
     title WebPaint
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/layout.css')
   body
+    .header
+      h1
+        a.title(href='/') WebPaint
+      a.paintMenu(href='/paint') Paint
+      a.createMenu(href='/create') Create
+      a.joinMenu(href='/join') Join
+      a.loginMenu(href='/login') Login
     block content
+    .footer
+      p.team 화합 6팀
+      ul
+        li 17OhSumin (오수민)
+        li Isabelle777 (허동호)
+        li EunJung516 (조은정)
+        li BaekYoonjae (백윤재)
+        li wanderlst (임소휘)
+      p.copyright &#169; 2020 WebPaint. All rights reserved.
+      h2 WebPaint

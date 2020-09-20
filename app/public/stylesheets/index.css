@@ -1,37 +1,3 @@
-.header{
-  height: 50px;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-areas:
-    ". . title title paint create join login . .";
-}
-.header h1{
-  grid-area: title;
-}
-.title{
-  text-decoration: none;
-  color: black;
-}
-.paintMenu{
-  grid-area: paint;
-  text-decoration: none;
-  color: black;
-}
-.createMenu{
-  grid-area: create;
-  text-decoration: none;
-  color: black;
-}
-.joinMenu{
-  grid-area: join;
-  text-decoration: none;
-  color: black;
-}
-.loginMenu{
-  grid-area: login;
-  text-decoration: none;
-  color: black;
-}
 .intro{
   background-color : blue;
   height: 400px;
@@ -56,6 +22,7 @@
 .intro button{
   grid-area: button;
 }
+
 .best{
   height: 450px;
   display: grid;
@@ -76,30 +43,4 @@
 }
 .bests{
   grid-area: bests;
-}
-.footer{
-  height: 200px;
-  display: grid;
-  background-color: grey;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-template-areas: 
-    ". . . . ."
-    ". team . copyright ."
-    ". ul . . ."
-    ". ul . . ."
-    ". ul . h2 ."
-    ". . . . .";
-}
-.team{
-  grid-area: team;
-}
-.footer ul{
-  grid-area: ul;
-}
-.copyright{
-  grid-area: copyright;
-}
-.footer h2{
-  grid-area: h2;
 }
