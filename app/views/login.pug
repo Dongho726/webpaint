@@ -4,9 +4,10 @@ block content
   .main
     .loginbox
       h2 Login
-      input(type="text", name="username", placeholder="Username")
-      input(type="password", name="password", placeholder="Password")
-      button Log in
+      input(type="text", name="username", placeholder="Username", id="login_username")
+      input(type="password", name="password", placeholder="Password", id="login_password")
+      button(id='login_submit') Log in
       p Don't you have an account? 
         a(href="/signup") Sign up
   link(rel='stylesheet', href='/stylesheets/login.css')
+  script(src='/scripts/login.js')

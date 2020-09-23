@@ -4,8 +4,9 @@ block content
   .main
     .signupbox
       h2 Sign up
-      input(type="text", name="Username", placeholder="Enter Username")
-      input(type="password", name="password", placeholder="Enter Password")
-      input(type="password", name="password_c", placeholder="Comfirm Password")
-      button Sign up
+      input(type="text", name="Username", placeholder="Enter Username", id='signup_username')
+      input(type="password", name="password", placeholder="Enter Password", id='signup_password')
+      input(type="password", name="confirm", placeholder="Comfirm Password", id='signup_confirm')
+      button(id='signup_submit') Sign up
   link(rel='stylesheet', href='/stylesheets/signup.css')
+  script(src='/scripts/signup.js')
