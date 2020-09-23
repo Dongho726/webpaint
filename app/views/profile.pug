@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  img(src="img/cat.jpg")
-  script(src="scripts/profile_alert.js")
+  .main
+    .profile
+      img(src="img/basic_profile.webp")
+      button Upload an Image
+      p.username Username
+      p.usernameValue Isabelle
+      p.intro Introduction
+      p.introValue admin / developer
+    .drawings
+  link(rel='stylesheet', href='/stylesheets/profile.css')
+  script(src="scripts/profile.js")

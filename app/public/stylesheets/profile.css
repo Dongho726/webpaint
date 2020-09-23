@@ -1,0 +1,52 @@
+.main{
+  min-height: 600px;
+  border-top: solid 1px black;
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-areas: 
+    ". . profile profile drawings drawings drawings drawings . .";
+}
+
+.profile{
+  margin: 50px 10px 0 10px;
+  grid-area: profile;
+  border: black 1px solid;
+  height: 500px;
+}
+.profile img{
+  margin: 50px 25% 0 25%;
+  width: 50%;
+  border-radius: 50%;
+  border: black solid 1px;
+}
+.profile button{
+  margin: 0 25% 0 25%;
+  width: 50%;
+}
+.username{
+  margin: 20px 10% 5px 10%;
+  width: 80%;
+}
+.usernameValue{
+  margin: 0 10% 0 10%;
+  padding: 5px 5% 5px 5%;
+  width: 70%;
+  border: black solid 1px;
+}
+.intro{
+  margin: 20px 10% 5px 10%;
+  width: 80%;
+}
+.introValue{
+  margin: 0 10% 0 10%;
+  padding: 5px 5% 5px 5%;
+  width: 70%;
+  border: black solid 1px;
+  min-height: 7em;
+}
+
+.drawings{
+  margin: 50px 10px 0 10px;
+  grid-area: drawings;
+  border: black 1px solid;
+}
