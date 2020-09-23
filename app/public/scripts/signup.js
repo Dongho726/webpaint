@@ -5,7 +5,7 @@ const submit = document.getElementById('signup_submit');
 
 let usernameLength = false; // true가 올바른 길이
 let passwordLength = false; // true가 올바른 길이
-let comfimMatch = false; // true가 비밀번호 일치
+let confirmMatch = false; // true가 비밀번호 일치
 let duplicate = false; // true가 username 중복되지 않음
 
 // username 길이 체크
@@ -37,10 +37,10 @@ function checkPasswordLength(){
 // confirm 비밀번호 일치 체크
 function checkMatch(){
   if(password.value != confirmPassword.value){
-    comfimMatch = false;
+    confirmMatch = false;
   }
   else{
-    comfimMatch = true;
+    confirmMatch = true;
   }
 }
 
@@ -87,6 +87,10 @@ confirmPassword.addEventListener('blur',function(){
 });
 
 submit.addEventListener('click',function(){
+  checkUsernameLength();
+  checkDuplicate();
+  checkPasswordLength();
+  checkMatch();
   if(username.value == ''){
     alert('username을 입력해주세요');
   }
@@ -105,7 +109,7 @@ submit.addEventListener('click',function(){
   else if(!passwordLength){
     alert('password는 8~30글자 입니다');
   }
-  else if(!comfimMatch){
+  else if(!confirmMatch){
     alert('confirm password가 일치하지 않습니다');
   }
   else{
