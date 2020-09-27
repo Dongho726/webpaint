@@ -7,6 +7,7 @@ const circleChoose=document.getElementById("jsCircle");
 const triangleChoose=document.getElementById("jsTriangle");
 const rectangleChoose=document.getElementById("jsRectangle");
 const modeSpace=document.getElementById("jsModeSpace");
+const saveBtn=document.getElementById("jsSave");
 
 canvas.width=800;
 canvas.height=600;
@@ -19,7 +20,10 @@ let rectangle=false; // rectangle일 때 rectangle 그리기
 let full=true; // true면 색깔 다 채워지기, false이면 선만 그리기
 let x=0; // 도형 그릴 때 x축 초기값 설정
 let y=0; // 도형 그릴 때 y축 초기값 설정
+context.fillStyle="white"; // 사진저장 배경을 위해 설정
+context.fillRect(0, 0, canvas.width, canvas.height); // 사진저장 배경을 위해 설정
 context.strokeStyle = "#2c2c2c";
+context.fillStyle="#2c2c2c";
 context.lineWidth = 2.5;
 
 
@@ -129,6 +133,14 @@ function handleRangeChange(event){
   context.lineWidth=size;
 }
 
+function handleSaveClick(){ // Save
+    const image=canvas.toDataURL();
+    const link=document.createElement("a");
+    link.href=image;
+    link.download="WebPaint";
+    link.click();
+}
+
 controlColor.addEventListener("input", setColor);
 range.addEventListener("input", handleRangeChange)
 canvas.addEventListener('mousedown', downHandler);
@@ -139,3 +151,4 @@ circleChoose.addEventListener("click", handleCircleClick);
 triangleChoose.addEventListener("click", handleTriangleClick);
 rectangleChoose.addEventListener("click", handleRectangleClick);
 modeSpace.addEventListener("click", handleModeSpaceClick);
+saveBtn.addEventListener("click", handleSaveClick);

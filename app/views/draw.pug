@@ -7,13 +7,14 @@ block content
     value='2.5' step='0.1')
   .controls_color
     input.controlColor(type="color" value="#2c2c2c")
-  .controls-spaces
+  .controls_spaceBTN
     button#jsDraw draw
     button#jsCircle Circle
     button#jsTriangle Triangle
     button#jsRectangle Rectangle
     button#jsModeSpace Full
-  button.save-btn 이미지 저장
+    br
+    button#jsSave Save
 
   link(rel='stylesheet', href='/stylesheets/draw.css')
   script(src='/scripts/canvas.js')
