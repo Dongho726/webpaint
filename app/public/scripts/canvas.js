@@ -141,6 +141,10 @@ function handleSaveClick(){ // Save
     link.click();
 }
 
+function handleCM(event){ // 우클릭으로 사진저장 방지
+    event.preventDefault();
+}
+
 controlColor.addEventListener("input", setColor);
 range.addEventListener("input", handleRangeChange)
 canvas.addEventListener('mousedown', downHandler);
@@ -152,3 +156,4 @@ triangleChoose.addEventListener("click", handleTriangleClick);
 rectangleChoose.addEventListener("click", handleRectangleClick);
 modeSpace.addEventListener("click", handleModeSpaceClick);
 saveBtn.addEventListener("click", handleSaveClick);
+canvas.addEventListener("contextmenu", handleCM);
