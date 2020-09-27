@@ -17,6 +17,24 @@ head
     border: 0;
     border-radius: 50%;
     }
+    .controls-spaces button{ /* 도형버튼 모양 */
+    all: unset;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px 0px;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+    }
+    .controls-spaces button:active{ /* 도형버튼 누르기 정도 조절 */
+    transform: scale(0.98);
+    }
     .color-btn[data-color='black']{ background:black; }
     .color-btn[data-color='red']{ background:red; }
     .color-btn[data-color='green']{ background:green; }
@@ -27,5 +45,10 @@ canvas.canvas(width='600' height='400')
   button.color-btn(data-type='color' data-color='red')
   button.color-btn(data-type='color' data-color='green')  
   button.color-btn(data-type='color' data-color='blue')
+.controls-spaces
+  button#jsDraw draw
+  button#jsCircle Circle
+  button#jsTriangle Triangle
+  button#jsRectangle Rectangle
 button.save-btn &#xC774;&#xBBF8;&#xC9C0; &#xC800;&#xC7A5;
 script(src='canvas.js')
