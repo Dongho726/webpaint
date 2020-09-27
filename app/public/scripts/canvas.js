@@ -6,6 +6,7 @@ const drawChoose=document.getElementById("jsDraw");
 const circleChoose=document.getElementById("jsCircle");
 const triangleChoose=document.getElementById("jsTriangle");
 const rectangleChoose=document.getElementById("jsRectangle");
+const modeSpace=document.getElementById("jsModeSpace");
 
 canvas.width=800;
 canvas.height=600;
@@ -15,6 +16,7 @@ let draw=true; // true일 때 drawing 하기
 let circle=false; // true일 때 circle 그리기
 let triangle=false; // true일 때 triangle 그리기
 let rectangle=false; // rectangle일 때 rectangle 그리기
+let full=true; // true면 색깔 다 채워지기, false이면 선만 그리기
 let x=0; // 도형 그릴 때 x축 초기값 설정
 let y=0; // 도형 그릴 때 y축 초기값 설정
 context.strokeStyle = "#2c2c2c";
@@ -37,16 +39,28 @@ function upHandler(event){
     if(circle===true){ // circle일 때
         context.beginPath();
         context.arc((x+lastX)/2, (y+lastY)/2, (Math.abs(lastX-x)+Math.abs(lastY-y))/4, 0, 2*Math.PI, 1);
-        context.fill();
+        if(full===true){
+            context.fill();
+        }else{
+            context.stroke();
+        }
     } else if(triangle===true){ // triangle일 때
         context.beginPath();
         context.moveTo(x, y);
         context.lineTo(lastX, lastY);
         context.lineTo(2*x-lastX, lastY);
         context.closePath();
-        context.fill();
+        if(full===true){
+            context.fill();
+        }else{
+            context.stroke();
+        }
     } else if(rectangle===true){ // rectangle일 때
-        context.fillRect(x,y,lastX-x, lastY-y);
+        if(full===true){
+            context.fillRect(x,y,lastX-x, lastY-y);
+        }else{
+            context.strokeRect(x,y,lastX-x, lastY-y);
+        }
     }
 }
 
@@ -99,6 +113,17 @@ function handleRectangleClick(){ // rectangle 눌렀을 때 실행
     rectangle=true;
 }
 
+function handleModeSpaceClick(){ // 도형 타입 설정
+    if(full===true){
+        full=false;
+        modeSpace.innerText="Line";
+    } else{
+        full=true;
+        modeSpace.innerText="Full";
+    }
+}
+
+
 function handleRangeChange(event){
   const size = event.target.value;
   context.lineWidth=size;
@@ -113,3 +138,4 @@ drawChoose.addEventListener("click", handleDrawClick);
 circleChoose.addEventListener("click", handleCircleClick);
 triangleChoose.addEventListener("click", handleTriangleClick);
 rectangleChoose.addEventListener("click", handleRectangleClick);
+modeSpace.addEventListener("click", handleModeSpaceClick);
