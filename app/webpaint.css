@@ -5,6 +5,20 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "IBMPlexSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "JSDongkang-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 .top {
   position: absolute;
   top: 0;
@@ -14,7 +28,7 @@
 }
 .topMenu {
   float: right;
-  margin-right: 4%;
+  margin-right: 3%;
   font-size: 30px;
   line-height: 80px;
   font-weight: 200;
@@ -29,13 +43,22 @@
   font-family: "GmarketSansBold";
   line-height: 80px;
 }
+.mainPhoto {
+  width: 100%;
+  height: 800px;
+  background-color: #0984e3;
+}
+.photo {
+  position: relative;
+  top: 70px;
+}
 .mainBoard {
   height: 1000px;
   width: 100%;
   background-color: silver;
 }
 .bottomMenu {
-  height: 240px;
+  height: 260px;
   width: 100%;
   background-color: rgb(75, 74, 74);
 }
@@ -105,4 +128,93 @@
 }
 #Join {
   margin-right: 17%;
+}
+.name {
+  position: relative;
+
+  left: 300px;
+  color: white;
+}
+.LargeName {
+  position: relative;
+  font-family: "JSDongkang-Regular";
+  font-size: 50px;
+  top: -570px;
+  font-weight: 600;
+}
+.SmallName {
+  position: relative;
+  font-size: 22px;
+  top: -500px;
+}
+.Draw {
+  position: relative;
+  border: solid white;
+  border-width: thin;
+  width: 200px;
+
+  top: -390px;
+  text-align: center;
+  font-size: 22px;
+}
+.scrapDrawing {
+  height: 1200px;
+  width: 100%;
+}
+.BestTitle {
+  position: relative;
+  top: 200px;
+  left: 300px;
+  color: #0984e3;
+  font-size: 60px;
+  font-weight: 600;
+}
+.sub {
+  font-size: 22px;
+  position: relative;
+  top: 180px;
+  left: 300px;
+}
+.Drawings {
+  position: relative;
+  top: 250px;
+  left: 300px;
+  margin-right: 90px;
+  border-radius: 20px;
+  height: 550px;
+  width: 370px;
+
+  float: left;
+}
+.pictures {
+  height: 70%;
+  width: 98.5%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: solid rgb(192, 192, 192);
+}
+.person {
+  position: relative;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 30%;
+  width: 100%;
+  background-color: rgb(192, 192, 192);
+}
+
+.pictureTitle {
+  position: relative;
+  top: -35px;
+  right: 18px;
+  width: 65%;
+  height: 70%;
+  /*border 선을 지워주세요*/
+  border: solid;
+  float: right;
+  margin-right: 10px;
+}
+.profileIMG {
+  position: relative;
+  top: 20px;
+  left: 25px;
 }
