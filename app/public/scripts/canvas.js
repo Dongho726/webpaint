@@ -1,25 +1,20 @@
-const canvas=document.getElementById("jsCanvas");
+const canvas = document.getElementById("jsCanvas");
 const context = canvas.getContext("2d");
 const controlColor = document.querySelector('.controlColor');
 const range = document.getElementById("jsRange");
-const canvas=document.querySelector('.canvas');
-const context = canvas.getContext('2d');
-const control = document.querySelector('.control');
 const drawChoose=document.getElementById("jsDraw");
 const circleChoose=document.getElementById("jsCircle");
 const triangleChoose=document.getElementById("jsTriangle");
 const rectangleChoose=document.getElementById("jsRectangle");
 
-canvas.width=700;
-canvas.height=700;
+canvas.width=800;
+canvas.height=600;
 
 let drawingMode; //true일 때만 그리기
 let draw=true; // true일 때 drawing 하기
 let circle=false; // true일 때 circle 그리기
 let triangle=false; // true일 때 triangle 그리기
 let rectangle=false; // rectangle일 때 rectangle 그리기
-let brush= 'color'; //color 
-let colorVal = 'black'; //default값으로 검은색 설정
 let x=0; // 도형 그릴 때 x축 초기값 설정
 let y=0; // 도형 그릴 때 y축 초기값 설정
 context.strokeStyle = "#2c2c2c";
@@ -37,7 +32,6 @@ function upHandler(event){
     if(drawingMode===true){ // draw일 때
         drawingMode=false; //마우스떼면 거짓으로
     }
-
     const lastX=event.offsetX;
     const lastY=event.offsetY;
     if(circle===true){ // circle일 때
@@ -74,6 +68,7 @@ function moveHandler(event){
 
 function setColor(event){
   context.strokeStyle=controlColor.value;
+  context.fillStyle=controlColor.value;
 }
 
 function handleDrawClick(){ // draw 눌렀을 때 실행
@@ -104,27 +99,17 @@ function handleRectangleClick(){ // rectangle 눌렀을 때 실행
     rectangle=true;
 }
 
-if(range){ 
-  range.addEventListener("input", handleRangeChange)
+function handleRangeChange(event){
+  const size = event.target.value;
+  context.lineWidth=size;
 }
 
+controlColor.addEventListener("input", setColor);
+range.addEventListener("input", handleRangeChange)
 canvas.addEventListener('mousedown', downHandler);
 canvas.addEventListener('mousemove', moveHandler);
 canvas.addEventListener('mouseup', upHandler);
-control.addEventListener('click', setColor);
-
-if(drawChoose){ // draw 버튼 눌렀을 때
-    drawChoose.addEventListener("click", handleDrawClick);
-}
-
-if(circleChoose){ // circle 버튼 눌렀을 때
-    circleChoose.addEventListener("click", handleCircleClick);
-}
-
-if(triangleChoose){ // triangle 버튼 눌렀을 때
-    triangleChoose.addEventListener("click", handleTriangleClick);
-}
-
-if(rectangleChoose){ // rectangle 버튼 눌렀을 때
-    rectangleChoose.addEventListener("click", handleRectangleClick);
-}
+drawChoose.addEventListener("click", handleDrawClick);
+circleChoose.addEventListener("click", handleCircleClick);
+triangleChoose.addEventListener("click", handleTriangleClick);
+rectangleChoose.addEventListener("click", handleRectangleClick);
