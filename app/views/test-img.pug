@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 test-img
+  form(action="/test/img" method='post' enctype="multipart/form-data")
+    input(type="file" accept='image/*' name='img')
+    input(type="submit")

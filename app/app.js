@@ -12,6 +12,9 @@ var profileRouter = require('./routes/profile');
 var createRouter = require('./routes/create');
 var searchRouter = require('./routes/search');
 var drawRouter = require('./routes/draw');
+var socketRouter = require('./routes/socket');
+
+var testRouter = require('./routes/test');
 
 var app = express();
 
@@ -36,7 +39,9 @@ app.use('/profile', profileRouter);
 app.use('/create', createRouter);
 app.use('/search', searchRouter);
 app.use('/draw', drawRouter);
+app.use('/socket', socketRouter);
 
+app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

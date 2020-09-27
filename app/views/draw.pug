@@ -1,12 +1,6 @@
 extends layout
 
 block content
-
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Document
   style.
     canvas{
     background: #eee;
@@ -39,16 +33,16 @@ head
     .color-btn[data-color='red']{ background:red; }
     .color-btn[data-color='green']{ background:green; }
     .color-btn[data-color='blue']{ background:blue; }
-canvas.canvas(width='600' height='400')
-.control
-  button.color-btn(data-type='color' data-color='black')
-  button.color-btn(data-type='color' data-color='red')
-  button.color-btn(data-type='color' data-color='green')  
-  button.color-btn(data-type='color' data-color='blue')
-.controls-spaces
-  button#jsDraw draw
-  button#jsCircle Circle
-  button#jsTriangle Triangle
-  button#jsRectangle Rectangle
-button.save-btn &#xC774;&#xBBF8;&#xC9C0; &#xC800;&#xC7A5;
-script(src='canvas.js')
+  canvas.canvas(width='600' height='400')
+  .control
+    button.color-btn(data-type='color' data-color='black')
+    button.color-btn(data-type='color' data-color='red')
+    button.color-btn(data-type='color' data-color='green')  
+    button.color-btn(data-type='color' data-color='blue')
+  .controls-spaces
+    button#jsDraw draw
+    button#jsCircle Circle
+    button#jsTriangle Triangle
+    button#jsRectangle Rectangle
+  button.save-btn &#xC774;&#xBBF8;&#xC9C0; &#xC800;&#xC7A5;
+  script(src='/scripts/canvas.js')
