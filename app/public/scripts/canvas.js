@@ -57,19 +57,6 @@ function upHandler(event){
 }
 
 function moveHandler(event){
-<<<<<<< HEAD
-  const x = event.offsetX;  //mousepointer의 x
-  const y = event.offsetY;  //mousepointer의 y
-
-if(!drawingMode) {
-  context.beginPath();
-  context.moveTo(x, y);
-}
-else {
-  context.lineTo(x, y);
-  context.stroke();
-}
-=======
     if(draw===true){
         const x = event.offsetX;  //mousepointer의 x
         const y = event.offsetY;  //mousepointer의 y
@@ -83,24 +70,17 @@ else {
             context.stroke();
         }
     }
->>>>>>> 6f018f13f39289fcc81a773fd8777f2148dae94f
 }
 
 function setColor(event){
   context.strokeStyle=controlColor.value;
 }
 
-<<<<<<< HEAD
-function handleRangeChange(event){
-  const size = event.target.value;
-  context.lineWidth=size;
-=======
 function handleDrawClick(){ // draw 눌렀을 때 실행
     draw=true; 
     circle=false;
     triangle=false;
     rectangle=false;
->>>>>>> 6f018f13f39289fcc81a773fd8777f2148dae94f
 }
 
 function handleCircleClick(){ // circle 눌렀을 때 실행
@@ -130,10 +110,6 @@ if(range){
 
 canvas.addEventListener('mousedown', downHandler);
 canvas.addEventListener('mousemove', moveHandler);
-<<<<<<< HEAD
-canvas.addEventListener('mouseup', uphandler);
-controlColor.addEventListener('input', setColor);
-=======
 canvas.addEventListener('mouseup', upHandler);
 control.addEventListener('click', setColor);
 
@@ -152,4 +128,3 @@ if(triangleChoose){ // triangle 버튼 눌렀을 때
 if(rectangleChoose){ // rectangle 버튼 눌렀을 때
     rectangleChoose.addEventListener("click", handleRectangleClick);
 }
->>>>>>> 6f018f13f39289fcc81a773fd8777f2148dae94f
