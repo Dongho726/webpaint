@@ -412,3 +412,17 @@
   color: blue;
   float: left;
 }
+.joinpage {
+  width: 100%;
+  height: 950px;
+}
+.joinBox {
+  position: relative;
+  top: 180px;
+  left: 590px;
+  width: 35%;
+  height: 650px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 7px rgb(190, 190, 190);
+  background-color: white;
+}
