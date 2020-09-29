@@ -1,6 +1,13 @@
-.canvas{
-  background-color:white;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+.main{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-areas:
+    "controls controls canvas canvas canvas canvas canvas canvas chat chat";
+}
+.controls{
+  grid-area: controls;
+  border: black solid 1px;
+  background-color: whitesmoke;
 }
 .controls_spaceBTN button{ /* 도형버튼 모양 */
   all: unset;
@@ -19,4 +26,39 @@
 }
 .controls_spaceBTN button:active{ /* 도형버튼 누르기 정도 조절 */
   transform: scale(0.98);
+}
+
+.canvas{
+  grid-area: canvas;
+  background-color:white;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.chat{
+  grid-area: chat;
+  display: grid;
+  border: black solid 1px;
+  grid-template-rows: repeat(16, 1fr);
+  grid-template-areas:
+    "l""l""l""l""l""l""l""l""l""l""l""l""l""l""l""i";
+}
+.chatlog{
+  grid-area: l;
+  background-color: whitesmoke;
+}
+.chatinput{
+  grid-area: i;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas: "i i i i b";
+}
+.chatinput input{
+  grid-area: i;
+  margin: 0;
+  padding: 0;
+}
+.chatinput button{
+  grid-area: b;
+  margin: 0;
+  padding: 0;
 }

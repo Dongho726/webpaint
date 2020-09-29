@@ -3,14 +3,27 @@ var WebSocket = require('ws');
 
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  if(req.session.username){
-    res.render('create');
-  }
-  else{
-    res.redirect('/login');
-  }
+// chat
+const ws = new WebSocket.Server({
+  port:8080,
+  path:'/chat'
 });
+
+ws.on('connection', function connection(ws) {
+  console.log('server connection');
+  ws.on('message', function (message) {
+    var msg = JSON.parse(message);
+    console.log(msg.username);
+    broadcast(message);
+  });
+});
+
+function broadcast(data) {
+  ws.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(data);
+    }
+  });
+}
 
 module.exports = router;

@@ -3,6 +3,10 @@ extends layout
 block content
   .main(style='min-height:600px;')
     h1 test-chat
-    ol
+    ol.chatting
       li chat here!
-    style li{border:1px solid black;}
+
+    input.chatinput(type="text" placeholder='chatting here')
+    button.chatsubmit submit
+    style .chatting li{border:1px solid black;}
+    script(src='/scripts/test-chat.js')

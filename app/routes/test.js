@@ -10,8 +10,17 @@ var upload = multer({
     acl: 'public-read'
   })
 }).single('img');
+const mysql = require('mysql');
+const con = mysql.createConnection({
+  host     : '13.209.48.163',
+  user     : 'root',
+  password : 'isabel716',
+  database : 'webpaint'
+});
 
 var router = express.Router();
+con.connect();
+
 
 
 // 기능 테스트용 라우터
