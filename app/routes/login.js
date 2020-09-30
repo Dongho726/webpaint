@@ -16,6 +16,22 @@ router.get('/', function(req, res, next) {
   res.render('login');
 });
 
+router.post('/query',function(req,res){
+  if(req.session.username === undefined){
+    res.json({
+      login:false
+    });
+  }else{
+    con.query('SELECT * FROM profile WHERE username = ?',[req.session.username],
+    function(error,results){
+      res.json({
+        login:true,
+        data:results[0]
+      });
+    });
+  }
+});
+
 router.post('/submit',function(req,res){
   //해시 생성
   const hash = crypto.createHmac('sha256', SECRET_HASH)

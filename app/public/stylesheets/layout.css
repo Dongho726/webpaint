@@ -1,3 +1,25 @@
+@font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBMPlexSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "JSDongkang-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,body,h1,h2,p{
   margin: 0;
 }
@@ -8,44 +30,51 @@ ul{
 }
 
 .header{
-  height: 50px;
+  height: 80px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-areas:
-    ". . title title paint create join login . .";
+    ". . title title search draw create user . .";
 }
-.header h1{
+.maintitle{
   grid-area: title;
+  background: linear-gradient(to right, #1ce6e6, #0400f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 40px;
+  font-family: "GmarketSansBold";
+  padding-top: 10px;
+  cursor: pointer;
 }
-.title{
+.searchMenu, .drawMenu, .createMenu, .userMenu{
   text-decoration: none;
   color: black;
+  text-align: right;
+  padding-top: 20px;
+  font-size: x-large;
+  cursor: pointer;
 }
-.paintMenu{
-  grid-area: paint;
-  text-decoration: none;
-  color: black;
+.searchMenu{
+  grid-area: search;
+}
+.drawMenu{
+  grid-area: draw;
 }
 .createMenu{
   grid-area: create;
-  text-decoration: none;
-  color: black;
 }
-.joinMenu{
-  grid-area: join;
-  text-decoration: none;
-  color: black;
+.userMenu{
+  grid-area: user;
 }
-.loginMenu{
-  grid-area: login;
-  text-decoration: none;
-  color: black;
+.userMenu img{
+  border-radius: 50%;
+  height: 40px;
 }
 
 .footer{
-  height: 200px;
+  height: 300px;
   display: grid;
-  background-color: grey;
+  background-color: rgb(66, 66, 66);
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-template-areas: 
@@ -58,13 +87,21 @@ ul{
 }
 .team{
   grid-area: team;
+  color: white;
 }
 .footer ul{
   grid-area: ul;
+  color: white;
 }
 .copyright{
   grid-area: copyright;
+  color: white;
+  text-align: right;
 }
-.footer h2{
+.footertitle{
   grid-area: h2;
+  color: white;
+  text-align: right;
+  font-size: xx-large;
+  font-weight: bold;
 }

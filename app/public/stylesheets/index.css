@@ -1,6 +1,8 @@
 .intro{
   background-color : blue;
-  height: 400px;
+  background-image: url('/img/indexintro.jpg');
+  background-size: cover;
+  height: 600px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -14,16 +16,27 @@
 }
 .intro h2{
   grid-area: h2;
+  color: whitesmoke;
+  font-size: 40px;
 }
 .intro p{
   grid-area: p;
+  width: 60%;
+  font-family: "JSDongkang-Regular";
+  color: whitesmoke;
+
 }
 .intro button{
   grid-area: button;
+  background-color: rgba(0,0,0,0);
+  border: 1px white solid;
+  color: white;
+  font-size: larger;
+  width: 50%;
 }
 
 .best{
-  height: 450px;
+  height: 800px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -35,6 +48,8 @@
     " . bests bests bests ."" . bests bests bests ."" . bests bests bests .";
 }
 .best h2{
+  color: rgb(36, 36, 129);
+  font-size: 40px;
   grid-area: h2;
 }
 .best p{
