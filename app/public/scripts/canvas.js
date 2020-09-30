@@ -6,18 +6,18 @@ const drawChoose=document.getElementById("jsDraw");
 const circleChoose=document.getElementById("jsCircle");
 const triangleChoose=document.getElementById("jsTriangle");
 const rectangleChoose=document.getElementById("jsRectangle");
-const modeSpace=document.getElementById("jsModeSpace");
+const fullChoose=document.getElementById("jsFull");
+const textChoose=document.getElementById("jsText");
 const saveBtn=document.getElementById("jsSave");
 
 canvas.width=800;
 canvas.height=600;
 
 let drawingMode; //true일 때만 그리기
-let draw=true; // true일 때 drawing 하기
-let circle=false; // true일 때 circle 그리기
-let triangle=false; // true일 때 triangle 그리기
-let rectangle=false; // rectangle일 때 rectangle 그리기
+let chooseMode='draw'; // mode가 어떤 건지 확인
 let full=true; // true면 색깔 다 채워지기, false이면 선만 그리기
+let textInput; // text 입력 받기
+let sizeFont=0; // 주어진 크기에 맞게 font 크기 조정
 let x=0; // 도형 그릴 때 x축 초기값 설정
 let y=0; // 도형 그릴 때 y축 초기값 설정
 context.fillStyle="white"; // 사진저장 배경을 위해 설정
@@ -40,7 +40,7 @@ function upHandler(event){
     }
     const lastX=event.offsetX;
     const lastY=event.offsetY;
-    if(circle===true){ // circle일 때
+    if(chooseMode==='circle'){ // circle일 때
         context.beginPath();
         context.arc((x+lastX)/2, (y+lastY)/2, (Math.abs(lastX-x)+Math.abs(lastY-y))/4, 0, 2*Math.PI, 1);
         if(full===true){
@@ -48,7 +48,7 @@ function upHandler(event){
         }else{
             context.stroke();
         }
-    } else if(triangle===true){ // triangle일 때
+    } else if(chooseMode==='triangle'){ // triangle일 때
         context.beginPath();
         context.moveTo(x, y);
         context.lineTo(lastX, lastY);
@@ -59,17 +59,22 @@ function upHandler(event){
         }else{
             context.stroke();
         }
-    } else if(rectangle===true){ // rectangle일 때
+    } else if(chooseMode==='rectangle'){ // rectangle일 때
         if(full===true){
             context.fillRect(x,y,lastX-x, lastY-y);
         }else{
             context.strokeRect(x,y,lastX-x, lastY-y);
         }
+    } else if(chooseMode==='text'){ // text일 때
+        sizeFont=Math.abs(x-lastX)/textInput.length*1.5;
+
+        context.font=sizeFont+"px sans-serif";
+        context.fillText(textInput, x, y+sizeFont);
     }
 }
 
 function moveHandler(event){
-    if(draw===true){
+    if(chooseMode==='draw'){
         const x = event.offsetX;  //mousepointer의 x
         const y = event.offsetY;  //mousepointer의 y
 
@@ -90,40 +95,28 @@ function setColor(event){
 }
 
 function handleDrawClick(){ // draw 눌렀을 때 실행
-    draw=true; 
-    circle=false;
-    triangle=false;
-    rectangle=false;
+    chooseMode='draw';
 }
 
 function handleCircleClick(){ // circle 눌렀을 때 실행
-    draw=false; 
-    circle=true;
-    triangle=false;
-    rectangle=false;
+    chooseMode='circle';
 }
 
 function handleTriangleClick(){ // triangle 눌렀을 때 실행
-    draw=false;
-    circle=false;
-    triangle=true;
-    rectangle=false;
+    chooseMode='triangle';
 }
 
 function handleRectangleClick(){ // rectangle 눌렀을 때 실행
-    draw=false;
-    circle=false; 
-    triangle=false; 
-    rectangle=true;
+    chooseMode='rectangle';
 }
 
-function handleModeSpaceClick(){ // 도형 타입 설정
+function handleFullClick(){ // 도형 타입 설정
     if(full===true){
         full=false;
-        modeSpace.innerText="Line";
+        fullChoose.innerText="Line";
     } else{
         full=true;
-        modeSpace.innerText="Full";
+        fullChoose.innerText="Full";
     }
 }
 
@@ -133,7 +126,13 @@ function handleRangeChange(event){
   context.lineWidth=size;
 }
 
-function handleSaveClick(){ // Save
+function handleTextClick(){ // text 눌렀을 때 실행
+    textInput=document.getElementById("input_Text").value;
+
+    chooseMode='text';
+}
+
+function handleSaveClick(){ // Save 눌렀을 때 실행
     const image=canvas.toDataURL();
     const link=document.createElement("a");
     link.href=image;
@@ -154,6 +153,7 @@ drawChoose.addEventListener("click", handleDrawClick);
 circleChoose.addEventListener("click", handleCircleClick);
 triangleChoose.addEventListener("click", handleTriangleClick);
 rectangleChoose.addEventListener("click", handleRectangleClick);
-modeSpace.addEventListener("click", handleModeSpaceClick);
+fullChoose.addEventListener("click", handleFullClick);
+textChoose.addEventListener("click", handleTextClick);
 saveBtn.addEventListener("click", handleSaveClick);
 canvas.addEventListener("contextmenu", handleCM);
