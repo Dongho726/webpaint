@@ -3,6 +3,11 @@ const searchMenu = document.querySelector('.searchMenu');
 const drawMenu = document.querySelector('.drawMenu');
 const createMenu = document.querySelector('.createMenu');
 const userMenu = document.querySelector('.userMenu');
+const loginStat = document.querySelector('.loginStat');
+const userAppend = document.querySelector('.userAppend');
+const toProfile = document.querySelector('.toProfile');
+const toInvite = document.querySelector('.toInvite');
+const toLogout = document.querySelector('.toLogout');
 
 let logindata = {
   islogined : false,
@@ -24,13 +29,13 @@ fetch('/login/query',{
   const parsedData = JSON.parse(data);
   //parsedData is object
   if(parsedData.login){
-    userMenu.innerHTML = `<img src='https://webpaint.s3.ap-northeast-2.amazonaws.com/${parsedData.data.img}'>`;
+    loginStat.innerHTML = `<img src='https://webpaint.s3.ap-northeast-2.amazonaws.com/${parsedData.data.img}'>`;
     logindata.islogined = true;
     logindata.username = parsedData.data.username;
     logindata.id = parsedData.data.id;
     logindata.img = parsedData.data.img;
   }else{
-    userMenu.innerHTML = 'Login';
+    loginStat.innerHTML = 'Login';
     logindata.islogined = false;
     logindata.username = null;
     logindata.id = null;
@@ -51,11 +56,22 @@ drawMenu.addEventListener('click',function(){
 createMenu.addEventListener('click',function(){
   location.href = '/create'
 });
-userMenu.addEventListener('click',function(){
+loginStat.addEventListener('click',function(){
   if(!logindata.islogined){
     location.href = '/login'
   }
   else{
-    location.href = `/profile/${logindata.id}`
+    userAppend.classList.toggle('hide');
   }
 });
+toProfile.addEventListener('click',function(){
+  location.href = `/login/${logindata.id}`;
+});
+toInvite.addEventListener('click',function(){
+  location.href = '/invitation'
+});
+toLogout.addEventListener('click',function(){
+  location.href = '/login/logout';
+});
+
+console.log(logindata);

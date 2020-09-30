@@ -9,7 +9,12 @@ html
       .searchMenu(href='/search') Search
       .drawMenu(href='/draw') Draw
       .createMenu(href='/create') Create
-      .userMenu(href='/login') Login
+      .userMenu(href='/login')
+        .loginStat Login
+        .userAppend(class='hide')
+          .toProfile My Profile
+          .toInvite Invitation
+          .toLogout Logout
     script(src='/scripts/layout.js')
     block content
     .footer

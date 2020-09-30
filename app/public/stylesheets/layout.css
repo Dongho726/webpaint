@@ -28,6 +28,9 @@ ul{
   list-style: none;
   padding-left: 0;
 }
+.hide{
+  display: none;
+}
 
 .header{
   height: 80px;
@@ -69,6 +72,24 @@ ul{
 .userMenu img{
   border-radius: 50%;
   height: 40px;
+}
+.userAppend{
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  font-size: large;
+}
+.toProfile{
+  border-bottom: 1px gray dotted;
+  padding: 5px 0 5px 0;
+}
+.toInvite{
+  border-bottom: 1px gray dotted;
+  padding: 5px 0 5px 0;
+}
+.toLogout{
+  padding: 5px 0 5px 0;
 }
 
 .footer{
