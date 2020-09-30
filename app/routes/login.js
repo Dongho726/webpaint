@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/query',function(req,res){
+  console.log(req.session.username);
   if(req.session.username === undefined){
     res.json({
       login:false

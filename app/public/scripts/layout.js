@@ -8,6 +8,7 @@ const userAppend = document.querySelector('.userAppend');
 const toProfile = document.querySelector('.toProfile');
 const toInvite = document.querySelector('.toInvite');
 const toLogout = document.querySelector('.toLogout');
+const loginEvent = document.querySelector('.loginEvent');
 
 let logindata = {
   islogined : false,
@@ -41,6 +42,7 @@ fetch('/login/query',{
     logindata.id = null;
     logindata.img = null;
   }
+  loginEvent.click();
 });
 
 
@@ -65,7 +67,7 @@ loginStat.addEventListener('click',function(){
   }
 });
 toProfile.addEventListener('click',function(){
-  location.href = `/login/${logindata.id}`;
+  location.href = `/profile/${logindata.id}`;
 });
 toInvite.addEventListener('click',function(){
   location.href = '/invitation'
@@ -73,5 +75,3 @@ toInvite.addEventListener('click',function(){
 toLogout.addEventListener('click',function(){
   location.href = '/login/logout';
 });
-
-console.log(logindata);

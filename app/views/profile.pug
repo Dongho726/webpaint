@@ -3,12 +3,14 @@ extends layout
 block content
   .main
     .profile
-      img(src="img/basic_profile.webp")
-      button Upload an Image
+      .profileId.hide #{id}
+      img(src=`https://webpaint.s3.ap-northeast-2.amazonaws.com/${img}`)
+      button.hide Upload an Image
+      input.imgupload.hide(type="file" accept='image/*')
       p.username Username
-      p.usernameValue Isabelle
+      p.usernameValue #{username}
       p.intro Introduction
-      p.introValue admin / developer
+      input(type="text" value=`${intro}` readonly).introValue
     .drawings
   link(rel='stylesheet', href='/stylesheets/profile.css')
-  script(src="scripts/profile.js")
+  script(src="/scripts/profile.js")
