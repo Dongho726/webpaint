@@ -38,6 +38,7 @@ ul{
   grid-template-columns: repeat(10, 1fr);
   grid-template-areas:
     ". . title title search draw create user . .";
+  box-shadow: 1px 1px 7px rgb(190, 190, 190);
 }
 .maintitle{
   grid-area: title;
