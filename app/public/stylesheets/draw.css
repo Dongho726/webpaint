@@ -1,10 +1,12 @@
 .main{
+  height: 600px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-areas:
     "controls controls canvas canvas canvas canvas canvas canvas chat chat";
 }
 .controls{
+  height: 600px;
   grid-area: controls;
   border: black solid 1px;
   background-color: whitesmoke;
@@ -35,6 +37,7 @@
 }
 
 .chat{
+  height: 600px;
   grid-area: chat;
   display: grid;
   border: black solid 1px;
@@ -44,6 +47,7 @@
 }
 .chatlog{
   grid-area: l;
+  overflow-y: scroll;
   background-color: whitesmoke;
 }
 .chatinput{

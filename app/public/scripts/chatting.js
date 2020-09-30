@@ -5,21 +5,29 @@ const chatsubmit = document.querySelector('.chatinput button');
 var chatsocket = new WebSocket("ws://localhost:8080/chat");
 
 function submitchat(event){
-  let msg = {
-    username : 'isabelle',
-    channel : '1',
-    content : chatinput.value
+  if(chatinput.value != ''){
+    let msg = {
+      username : 'isabelle',
+      channel : '1',
+      content : chatinput.value
+    }
+    chatinput.value = '';
+    chatsocket.send(JSON.stringify(msg));
   }
-  chatinput.value = '';
-  chatsocket.send(JSON.stringify(msg));
 }
 
 chatsocket.onopen = function (event) {
   console.log('client onopen')
   chatsubmit.addEventListener('click', submitchat);
+  chatinput.addEventListener('keyup', function(event){
+    if(event.keyCode === 13){
+      submitchat();
+    }
+  });
 };
 
 chatsocket.onmessage = function (event) {
   var msg = JSON.parse(event.data)
   chatlog.innerHTML += `<p>${msg.username} : ${msg.content}</p>`
+  chatlog.scrollTop = chatlog.scrollHeight;
 }
