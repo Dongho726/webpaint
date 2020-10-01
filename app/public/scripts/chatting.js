@@ -2,7 +2,7 @@ const chatlog = document.querySelector('.chatlog');
 const chatinput = document.querySelector('.chatinput input');
 const chatsubmit = document.querySelector('.chatinput button');
 
-var chatsocket = new WebSocket("ws://localhost:8080/chat");
+var chatsocket = new WebSocket("ws://13.209.48.163:8080/chat");
 
 function submitchat(event){
   if(chatinput.value != ''){
