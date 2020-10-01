@@ -30,7 +30,7 @@ fetch('/login/query',{
   const parsedData = JSON.parse(data);
   //parsedData is object
   if(parsedData.login){
-    loginStat.innerHTML = `<img src='https://webpaint.s3.ap-northeast-2.amazonaws.com/${parsedData.data.img}'>`;
+    loginStat.innerHTML = `${parsedData.data.username}`
     logindata.islogined = true;
     logindata.username = parsedData.data.username;
     logindata.id = parsedData.data.id;

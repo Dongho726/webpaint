@@ -70,16 +70,14 @@ ul{
 .userMenu{
   grid-area: user;
 }
-.userMenu img{
-  border-radius: 50%;
-  height: 40px;
-}
 .userAppend{
   background-color: white;
   padding: 10px 20px 10px 20px;
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
   font-size: large;
+  position: relative;
+  z-index: 9999;
 }
 .toProfile{
   border-bottom: 1px gray dotted;

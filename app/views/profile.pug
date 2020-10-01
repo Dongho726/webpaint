@@ -4,13 +4,17 @@ block content
   .main
     .profile
       .profileId.hide #{id}
-      img(src=`https://webpaint.s3.ap-northeast-2.amazonaws.com/${img}`)
+      .imgContainer(style=`background-image:url('https://webpaint.s3.ap-northeast-2.amazonaws.com/${img}')`)
       button.hide Upload an Image
-      input.imgupload.hide(type="file" accept='image/*')
+      form(action="/profile/img" method="post" enctype="multipart/form-data")
+        input.imgupload.hide(type="file" name='img' accept='image/*')
+        input.hide.imgsubmit(type="submit")
       p.username Username
       p.usernameValue #{username}
       p.intro Introduction
-      input(type="text" value=`${intro}` readonly).introValue
+      form(action="/profile/intro" method="post")
+        input(type="text" name='intro' value=`${intro}` readonly).introValue
+        input.hide.introsubmit(type="submit")
     .drawings
   link(rel='stylesheet', href='/stylesheets/profile.css')
   script(src="/scripts/profile.js")
