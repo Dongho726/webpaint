@@ -9,6 +9,7 @@ const rectangleChoose=document.getElementById("jsRectangle");
 const fullChoose=document.getElementById("jsFull");
 const textChoose=document.getElementById("jsText");
 const saveBtn=document.getElementById("jsSave");
+const restoreBtn=document.getElementById("restore");
 
 canvas.width=800;
 canvas.height=600;
@@ -25,9 +26,10 @@ context.fillRect(0, 0, canvas.width, canvas.height); // 사진저장 배경을 �
 context.strokeStyle = "#2c2c2c";
 context.fillStyle="#2c2c2c";
 context.lineWidth = 2.5;
-
+var drawBack= new Array;
 
 function downHandler(event){
+    saveCanvas();
     drawingMode=true; //클릭하면 참으로
 
     x=event.offsetX; // 도형 그릴 때 초기값 설정
@@ -144,6 +146,17 @@ function handleCM(event){ // 우클릭으로 사진저장 방지
     event.preventDefault();
 }
 
+function saveCanvas(){  //현재 그리기 상태 저장
+    drawBack.push(context.getImageData(0, 0, canvas.width, canvas.height));
+}
+
+
+function prevCanvas(event) {  //되돌리기
+    if(drawBack.length>0){
+        context.putImageData(drawBack.pop(), 0, 0);
+    }
+}
+
 controlColor.addEventListener("input", setColor);
 range.addEventListener("input", handleRangeChange)
 canvas.addEventListener('mousedown', downHandler);
@@ -157,3 +170,4 @@ fullChoose.addEventListener("click", handleFullClick);
 textChoose.addEventListener("click", handleTextClick);
 saveBtn.addEventListener("click", handleSaveClick);
 canvas.addEventListener("contextmenu", handleCM);
+restoreBtn.addEventListener("click", prevCanvas);
