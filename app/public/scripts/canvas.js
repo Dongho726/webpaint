@@ -10,6 +10,7 @@ const fullChoose=document.getElementById("jsFull");
 const textChoose=document.getElementById("jsText");
 const saveBtn=document.getElementById("jsSave");
 const restoreBtn=document.getElementById("restore");
+const eraseBtn=document.getElementById("erase");
 
 canvas.width=800;
 canvas.height=600;
@@ -97,6 +98,7 @@ function setColor(event){
 }
 
 function handleDrawClick(){ // draw 눌렀을 때 실행
+    context.globalCompositeOperation='source-over';
     chooseMode='draw';
 }
 
@@ -111,6 +113,11 @@ function handleTriangleClick(){ // triangle 눌렀을 때 실행
 function handleRectangleClick(){ // rectangle 눌렀을 때 실행
     chooseMode='rectangle';
 }
+
+function handleEraseClick() {  //Erase 눌렀을 때 실행
+    context.globalCompositeOperation = 'destination-out';  
+    
+  }
 
 function handleFullClick(){ // 도형 타입 설정
     if(full===true){
@@ -171,3 +178,4 @@ textChoose.addEventListener("click", handleTextClick);
 saveBtn.addEventListener("click", handleSaveClick);
 canvas.addEventListener("contextmenu", handleCM);
 restoreBtn.addEventListener("click", prevCanvas);
+eraseBtn.addEventListener("click", handleEraseClick);
