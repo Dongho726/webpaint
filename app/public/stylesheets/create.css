@@ -13,3 +13,11 @@
   border-radius: 20px;
   box-shadow: 1px 1px 7px rgb(190, 190, 190);
 }
+.createbox p{
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+}
+.createName{
+  width: 100%;
+}

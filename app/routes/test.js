@@ -21,9 +21,9 @@ const con = mysql.createConnection({
 var router = express.Router();
 con.connect();
 
-
-
-// 기능 테스트용 라우터
+router.get('/canvas', function(req,res){
+  res.render('test-canvas');
+});
 
 router.get('/img', function(req, res, next) {
   res.render('test-img');

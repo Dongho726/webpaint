@@ -11,7 +11,7 @@ function submitchat(event){
       channel : '1',
       content : chatinput.value
     }
-    chatinput.value = '';
+    chatinput.value = ''; 
     chatsocket.send(JSON.stringify(msg));
   }
 }

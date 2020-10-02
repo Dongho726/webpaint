@@ -5,11 +5,13 @@ block content
     .createbox
       p Create a new paint
       form(action="/create/submit", method="post")
-        input(type="text" name='name' placeholder='paint name')
+        input.createName(type="text" name='name' placeholder='paint name')
         input(type="radio" name='open' value='public')
-        span public : 모두가 그림을 검색하고 볼 수 있습니다.
+        span  public : 모두가 그림을 검색하고 볼 수 있습니다.
+        br
         input(type="radio" name='open' value='private')
-        span private : 초대한 유저들만 그림을 볼 수 있습니다.
+        span  private : 초대한 유저들만 그림을 볼 수 있습니다.
+        input(type="submit" value='create')
 
   link(rel='stylesheet', href='/stylesheets/create.css')
   
