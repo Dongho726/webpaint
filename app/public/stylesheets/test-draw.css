@@ -1,0 +1,77 @@
+.main{
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas:
+      "controls controls canvas canvas canvas canvas canvas canvas chat chat";
+  }
+  .controls{
+    height: 600px;
+    grid-area: controls;
+    border: black solid 1px;
+    background-color: whitesmoke;
+  }
+  .controls_spaceBTN button{ /* 도형버튼 모양 */
+    all: unset;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px 0px;
+    width: 80px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 12px;
+  }
+  .controls_spaceBTN button:active{ /* 도형버튼 누르기 정도 조절 */
+    transform: scale(0.98);
+  }
+  
+  .canvases{
+    grid-area: canvas;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 100%;
+  }
+  .canvases img{
+      position: absolute;
+      display: block;
+  }
+  .canvas{
+      position: absolute;
+      display: block;
+  }
+  
+  .chat{
+    height: 600px;
+    grid-area: chat;
+    display: grid;
+    border: black solid 1px;
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-areas:
+      "l""l""l""l""l""l""l""l""l""l""l""l""l""l""l""i";
+  }
+  .chatlog{
+    grid-area: l;
+    overflow-y: scroll;
+    background-color: whitesmoke;
+  }
+  .chatinput{
+    grid-area: i;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "i i i i b";
+  }
+  .chatinput input{
+    grid-area: i;
+    margin: 0;
+    padding: 0;
+  }
+  .chatinput button{
+    grid-area: b;
+    margin: 0;
+    padding: 0;
+  }
+  

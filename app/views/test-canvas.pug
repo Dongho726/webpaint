@@ -29,7 +29,9 @@ block content
             button &uarr;
             button &darr;
             span username : layer1
-    canvas.canvas(id="jsCanvas")
+    .canvases
+      img(src="https://webpaint.s3.ap-northeast-2.amazonaws.com/test", alt="layers")
+      canvas.canvas(id="jsCanvas")
     .chat
       .chatlog
       .chatinput
@@ -37,7 +39,6 @@ block content
         button &#8594;
     
 
-  link(rel='stylesheet', href='/stylesheets/draw.css')
+  link(rel='stylesheet', href='/stylesheets/test-draw.css')
   script(src='/scripts/test-canvas.js')
   script(src='/scripts/chatting.js')
-  
