@@ -26,8 +26,6 @@ let textInput; // text 입력 받기
 let sizeFont=0; // 주어진 크기에 맞게 font 크기 조정
 let x=0; // 도형 그릴 때 x축 초기값 설정
 let y=0; // 도형 그릴 때 y축 초기값 설정
-context.fillStyle="white"; // 사진저장 배경을 위해 설정
-context.fillRect(0, 0, canvas.width, canvas.height); // 사진저장 배경을 위해 설정
 context.strokeStyle = "#2c2c2c";
 context.fillStyle="#2c2c2c";
 context.lineWidth = 2.5;
