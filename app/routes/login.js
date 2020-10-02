@@ -38,7 +38,7 @@ router.post('/submit',function(req,res){
     .update(req.body.password)
     .digest('hex');
   //로그인 정보 확인
-  con.query('SELECT password FROM auth WHERE username = ?',[req.body.username],
+  con.query('SELECT * FROM auth WHERE username = ?',[req.body.username],
   function(error,results){
     if(!results[0]){
       //로그인 실패
@@ -52,6 +52,7 @@ router.post('/submit',function(req,res){
       if(password===hash){
         //로그인 성공
         req.session.username = req.body.username;
+        req.session.id = results[0].id;
         console.log(req.body.username,'login');
         res.json({
           login:true,
