@@ -24,6 +24,14 @@ con.connect();
 router.get('/canvas', function(req,res){
   res.render('test-canvas');
 });
+router.post('/canvas',function(req,res){
+  upload(req,res,function(err){
+    if(err){
+      console.log(err);
+    }
+    console.log(req.file.key);
+  });
+});
 
 router.get('/img', function(req, res, next) {
   res.render('test-img');

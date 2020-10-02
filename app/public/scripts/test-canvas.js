@@ -11,6 +11,7 @@ const textChoose=document.getElementById("jsText");
 const saveBtn=document.getElementById("jsSave");
 const restoreBtn=document.getElementById("restore");
 const eraseBtn=document.getElementById("erase");
+const submitf=document.getElementById("jsSubmit");
 
 const width = 800;
 const height = 600;
@@ -167,6 +168,17 @@ function prevCanvas(event) {  //되돌리기
     }
 }
 
+function sendToServer(){
+    canvas.toBlob(function(blob){
+        var formdata = new FormData();
+        formdata.append("img",blob);
+        fetch('/test/canvas',{
+        method:'POST',
+        body: formdata
+      });
+    });
+}
+
 controlColor.addEventListener("input", setColor);
 range.addEventListener("input", handleRangeChange)
 canvas.addEventListener('mousedown', downHandler);
@@ -182,3 +194,4 @@ saveBtn.addEventListener("click", handleSaveClick);
 canvas.addEventListener("contextmenu", handleCM);
 restoreBtn.addEventListener("click", prevCanvas);
 eraseBtn.addEventListener("click", handleEraseClick);
+submitf.addEventListener("click", sendToServer);
