@@ -23,11 +23,10 @@ fetch(`/draw/${canvasid}/load`,{
 }).then(function(data){
     const parsedData = JSON.parse(data);
     paintData = parsedData;
-
     paintData.othercanvas.forEach(element => {
         console.log(element);
         var newimg = document.createElement("img");
-        newimg.setAttribute("id", element.user);
+        newimg.setAttribute("id", 'layers_'+element.username);
         if(element.png != null){
             newimg.setAttribute("src", `https://webpaint.s3.ap-northeast-2.amazonaws.com/${element.png}`);
         }
@@ -44,7 +43,27 @@ fetch(`/draw/${canvasid}/load`,{
     }
 });
 
+var canvassocket = new WebSocket("ws://13.209.48.163:8080");
 
+function submitcanvas(pngname){
+    let username = document.querySelector('.loginStat').innerHTML;
+    let msg = {
+        type: 'canvas',
+        username : username,
+        channel : canvasid,
+        content : pngname
+    }
+    canvassocket.send(JSON.stringify(msg));
+}
+
+canvassocket.onmessage = function (event) {
+  var msg = JSON.parse(event.data)
+  if(msg.type == 'canvas'){
+    if(msg.chennel = canvasid){
+      document.querySelector(`#layers_${msg}`).setAttribute("src", `https://webpaint.s3.ap-northeast-2.amazonaws.com/${msg.content}`);
+    }
+  }
+}
 
 const width = 912;
 const height = 513;
@@ -207,9 +226,14 @@ function sendToServer(){
         var formdata = new FormData();
         formdata.append("img",blob);
         fetch(`/draw/${canvasid}/submit`,{
-        method:'POST',
-        body: formdata
-      });
+            method:'POST',
+            body: formdata
+        }).then(function(res){
+            return res.text();
+        }).then(function(data){
+            const parsedData = JSON.parse(data);
+            submitcanvas(parsedData.name);
+        });
     });
 }
 

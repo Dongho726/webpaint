@@ -78,7 +78,7 @@ router.post('/:id/submit', function(req,res){
       if(e){
         console.log(e);
       }
-      res.json({ok:1});
+      res.json({name:req.file.key});
     });
   });
 });
