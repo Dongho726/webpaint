@@ -26,8 +26,12 @@ router.post('/submit', function(req,res){
     if(err){
       console.log(err);
     }
-    console.log(results);
-    res.redirect(`/draw/${results.insertId}/canvas`);
+    con.query('INSERT INTO canvas (canvas,user) VALUES (?,?)',[results.insertId,req.session.id],function(e,r){
+      if(e){
+        console.log(e)
+      }
+      res.redirect(`/draw/${results.insertId}/canvas`);
+    });
   });
 });
 

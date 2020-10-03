@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .main
+    .settingsBox
+      p Settings
+      .accessBox
+        span.settingsMenu Access : 
+        input(type="radio" value='1')
+        span public
+        input(type="radio" value='0')
+        span private
+      .collaboratorBox
+        span.settingsMenu Collaborator : 
+        input.inviteName(type="text" placeholder='username')
+        button.inviteBtn invite
+        .collaboratorList
+          ol
+            li isabelle
+
+
+  link(rel='stylesheet', href='/stylesheets/draw-settings.css')
+  script(src='/scripts/draw-settings.js')

@@ -11,9 +11,19 @@ const textChoose=document.getElementById("jsText");
 const saveBtn=document.getElementById("jsSave");
 const restoreBtn=document.getElementById("restore");
 const eraseBtn=document.getElementById("erase");
+const canvasid=document.querySelector('.canvasid').innerHTML;
 
-const width = 800;
-const height = 600;
+fetch(`/draw/${canvasid}/load`,{
+    method:'POST'
+  }).then(function(res){
+    return res.text();
+  }).then(function(data){
+    const parsedData = JSON.parse(data);
+    console.log(parsedData);
+  });
+
+const width = 912;
+const height = 513;
 
 canvas.width=width;
 canvas.height=height;
@@ -77,6 +87,7 @@ function upHandler(event){
         context.font=sizeFont+"px sans-serif";
         context.fillText(textInput, x, y+sizeFont);
     }
+    sendToServer();
 }
 
 function moveHandler(event){
@@ -164,7 +175,20 @@ function saveCanvas(){  //현재 그리기 상태 저장
 function prevCanvas(event) {  //되돌리기
     if(drawBack.length>0){
         context.putImageData(drawBack.pop(), 0, 0);
+        sendToServer();
     }
+}
+
+function sendToServer(){
+    console.log('sendtoserver');
+    canvas.toBlob(function(blob){
+        var formdata = new FormData();
+        formdata.append("img",blob);
+        fetch(`/draw/${canvasid}/submit`,{
+        method:'POST',
+        body: formdata
+      });
+    });
 }
 
 controlColor.addEventListener("input", setColor);

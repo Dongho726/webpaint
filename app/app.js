@@ -13,6 +13,7 @@ var createRouter = require('./routes/create');
 var searchRouter = require('./routes/search');
 var drawRouter = require('./routes/draw');
 var socketRouter = require('./routes/socket');
+var invitationRouter = require('./routes/invitation');
 
 var testRouter = require('./routes/test');
 
@@ -40,6 +41,7 @@ app.use('/create', createRouter);
 app.use('/search', searchRouter);
 app.use('/draw', drawRouter);
 app.use('/socket', socketRouter);
+app.use('/invitation', invitationRouter);
 
 app.use('/test', testRouter);
 

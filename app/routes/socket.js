@@ -3,30 +3,23 @@ var WebSocket = require('ws');
 
 var router = express.Router();
 
-// chat
-// const wsChat = new WebSocket.Server({
-//   port:8080,
-//   path:'/chat'
-// });
-// const wsCanvas = new WebSocket.Server({
-//   port:8080,
-//   path:'/canvas'
-// });
+ const ws = new WebSocket.Server({
+   port:8080
+ });
 
-// wsChat.on('connection', function connection(wsChat) {
-//   console.log('chatws');
-//   wsChat.on('message', function (message) {
-//     var msg = JSON.parse(message);
-//     console.log(msg.username);
-//     chatBroadcast(message);
-//   });
-// });
-// function chatBroadcast(data) {
-//   wsChat.clients.forEach((client) => {
-//     if (client.readyState === WebSocket.OPEN) {
-//       client.send(data);
-//     }
-//   });
-// }
+ ws.on('connection', function connection(WS) {
+   WS.on('message', function (message) {
+     var msg = JSON.parse(message);
+     console.log(msg.username);
+     chatBroadcast(message);
+   });
+ });
+ function chatBroadcast(data) {
+   ws.clients.forEach((client) => {
+     if (client.readyState === WebSocket.OPEN) {
+       client.send(data);
+     }
+   });
+ }
 
 module.exports = router;
