@@ -42,6 +42,7 @@
 .canvas{
     position: absolute;
     display: block;
+    z-index: 99999;
 }
 
 .chat{
