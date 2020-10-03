@@ -34,12 +34,14 @@ fetch(`/draw/${canvasid}/load`,{
         canvases.appendChild(newimg);
     });
 
-    var img = new Image();
-    img.src = `https://webpaint.s3.ap-northeast-2.amazonaws.com/${paintData.mycanvas.png}`;
-    img.crossOrigin = "Anonymous";
-    img.onload = function () {
-        context.drawImage(img, 0, 0, width, height);
-    };
+    if(paintData.mycanvas.png != null){
+        var img = new Image();
+        img.src = `https://webpaint.s3.ap-northeast-2.amazonaws.com/${paintData.mycanvas.png}`;
+        img.crossOrigin = "Anonymous";
+        img.onload = function () {
+            context.drawImage(img, 0, 0, width, height);
+        };
+    }
 });
 
 
