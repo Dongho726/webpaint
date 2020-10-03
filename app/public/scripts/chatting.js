@@ -5,7 +5,7 @@ const chatsubmit = document.querySelector('.chatinput button');
 var chatsocket = new WebSocket("ws://13.209.48.163:8080");
 
 function submitchat(event){
-  console.log(username);
+  let username = document.querySelector('.loginStat').innerHTML;
   if(chatinput.value != ''){
     let msg = {
       type: 'chat',
