@@ -42,6 +42,31 @@ router.get('/:id/canvas',function(req,res){
     });
 });
 
+router.get('/:id', function(req,res){
+  var response = {
+    canvasId : req.params.id,
+    canvasList : [],
+    canvasName : ''
+  };
+  con.query("SELECT * FROM drawing WHERE id = ?",[req.params.id],
+  function(e,r){
+    if(e){
+      console.log(e);
+    }
+    req.canvasName = r[0].name;
+  });
+  con.query('SELECT * FROM canvas WEHRE canvas = ?',[req.params.id],
+  function(err,results){
+    if(err){
+      console.log(err);
+    }
+    results.forEach(element => {
+      canvasList.push(element);
+    });
+    res.send('draw-overview',response);
+  });
+});
+
 router.get('/:id/settings',function(req,res){
   res.render('draw-settings',{canvasid : req.params.id});
 });
