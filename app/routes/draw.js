@@ -43,7 +43,7 @@ router.get('/:id/canvas',function(req,res){
 });
 
 router.get('/:id/settings',function(req,res){
-  res.render('draw-settings');
+  res.render('draw-settings',{canvasid : req.params.id});
 });
 
 router.post('/:id/load', function(req,res){
@@ -51,7 +51,7 @@ router.post('/:id/load', function(req,res){
     mycanvas : {},
     othercanvas : []
   };
-  con.query('SELECT * FROM canvas WHERE canvas = ?',[req.params.id],
+  con.query('select canvas,user,png,username from canvas as c join profile as p on (c.user=p.id) where canvas = ?',[req.params.id],
   function(err,results){
     if(err){
       console.log(err);
@@ -80,6 +80,33 @@ router.post('/:id/submit', function(req,res){
       }
       res.json({ok:1});
     });
+  });
+});
+
+router.post('/:id/invite',function(req,res){
+  con.query('SELECT * FROM profile WHERE username = ?',[req.body.user],
+  function(err,results){
+    if(err){
+      console.log(err);
+    }
+    if(!results[0]){
+      res.json({
+        invite:false,
+        user:req.body.user
+      });
+    }
+    else{
+      con.query('INSERT INTO canvas (canvas,user) VALUES (?,?)',[req.body.id,results[0].id],
+      function(e,r){
+        if(e){
+          console.log(e);
+        }
+        res.json({
+          invite:true,
+          user:req.body.user
+        });
+      });
+    }
   });
 });
 

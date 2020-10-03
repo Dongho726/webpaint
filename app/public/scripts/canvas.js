@@ -13,14 +13,25 @@ const restoreBtn=document.getElementById("restore");
 const eraseBtn=document.getElementById("erase");
 const canvasid=document.querySelector('.canvasid').innerHTML;
 
+let paintData = {};
+
 fetch(`/draw/${canvasid}/load`,{
     method:'POST'
-  }).then(function(res){
+}).then(function(res){
     return res.text();
-  }).then(function(data){
+}).then(function(data){
     const parsedData = JSON.parse(data);
-    console.log(parsedData);
-  });
+    paintData = parsedData;
+
+    var img = new Image();
+    img.src = `https://webpaint.s3.ap-northeast-2.amazonaws.com/${paintData.mycanvas.png}`;
+    img.crossOrigin = "Anonymous";
+    img.onload = function () {
+        context.drawImage(img, 0, 0, width, height);
+    };  
+});
+
+
 
 const width = 912;
 const height = 513;
@@ -35,8 +46,6 @@ let textInput; // text 입력 받기
 let sizeFont=0; // 주어진 크기에 맞게 font 크기 조정
 let x=0; // 도형 그릴 때 x축 초기값 설정
 let y=0; // 도형 그릴 때 y축 초기값 설정
-context.fillStyle="white"; // 사진저장 배경을 위해 설정
-context.fillRect(0, 0, canvas.width, canvas.height); // 사진저장 배경을 위해 설정
 context.strokeStyle = "#2c2c2c";
 context.fillStyle="#2c2c2c";
 context.lineWidth = 2.5;

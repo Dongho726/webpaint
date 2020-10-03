@@ -2,13 +2,14 @@ const chatlog = document.querySelector('.chatlog');
 const chatinput = document.querySelector('.chatinput input');
 const chatsubmit = document.querySelector('.chatinput button');
 
-var chatsocket = new WebSocket("ws://13.209.48.163:8080/chat");
+var chatsocket = new WebSocket("ws://13.209.48.163:8080");
 
 function submitchat(event){
   if(chatinput.value != ''){
     let msg = {
+      type: 'chat',
       username : 'isabelle',
-      channel : '1',
+      channel : canvasid,
       content : chatinput.value
     }
     chatinput.value = ''; 
@@ -28,6 +29,10 @@ chatsocket.onopen = function (event) {
 
 chatsocket.onmessage = function (event) {
   var msg = JSON.parse(event.data)
-  chatlog.innerHTML += `<p>${msg.username} : ${msg.content}</p>`
-  chatlog.scrollTop = chatlog.scrollHeight;
+  if(msg.type == 'chat'){
+    if(msg.chennel = canvasid){
+      chatlog.innerHTML += `<p>${msg.username} : ${msg.content}</p>`
+      chatlog.scrollTop = chatlog.scrollHeight;
+    }
+  }
 }
