@@ -1,7 +1,7 @@
 var express = require('express');
 var multer = require('multer');
 var aws = require('aws-sdk');
-aws.config.loadFromPath('./awsconfig.json');
+// aws.config.loadFromPath('./awsconfig.json');
 var multerS3 = require('multer-s3');
 var s3 = new aws.S3();
 var upload = multer({
