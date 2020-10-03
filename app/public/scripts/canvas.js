@@ -12,6 +12,7 @@ const saveBtn=document.getElementById("jsSave");
 const restoreBtn=document.getElementById("restore");
 const eraseBtn=document.getElementById("erase");
 const canvasid=document.querySelector('.canvasid').innerHTML;
+const canvases = document.querySelector('.canvases');
 
 let paintData = {};
 
@@ -23,12 +24,22 @@ fetch(`/draw/${canvasid}/load`,{
     const parsedData = JSON.parse(data);
     paintData = parsedData;
 
+    paintData.othercanvas.forEach(element => {
+        console.log(element);
+        var newimg = document.createElement("img");
+        newimg.setAttribute("id", element.user);
+        if(element.png != null){
+            newimg.setAttribute("src", `https://webpaint.s3.ap-northeast-2.amazonaws.com/${element.png}`);
+        }
+        canvases.appendChild(newimg);
+    });
+
     var img = new Image();
     img.src = `https://webpaint.s3.ap-northeast-2.amazonaws.com/${paintData.mycanvas.png}`;
     img.crossOrigin = "Anonymous";
     img.onload = function () {
         context.drawImage(img, 0, 0, width, height);
-    };  
+    };
 });
 
 

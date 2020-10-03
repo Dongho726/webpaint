@@ -19,7 +19,6 @@ function submitchat(event){
 }
 
 chatsocket.onopen = function (event) {
-  console.log('client onopen')
   chatsubmit.addEventListener('click', submitchat);
   chatinput.addEventListener('keyup', function(event){
     if(event.keyCode === 13){
