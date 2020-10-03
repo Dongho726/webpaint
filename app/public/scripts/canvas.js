@@ -60,7 +60,7 @@ canvassocket.onmessage = function (event) {
   var msg = JSON.parse(event.data)
   if(msg.type == 'canvas'){
     if(msg.chennel = canvasid){
-      document.querySelector(`#layers_${msg}`).setAttribute("src", `https://webpaint.s3.ap-northeast-2.amazonaws.com/${msg.content}`);
+      document.querySelector(`#layers_${msg.username}`).setAttribute("src", `https://webpaint.s3.ap-northeast-2.amazonaws.com/${msg.content}`);
     }
   }
 }
