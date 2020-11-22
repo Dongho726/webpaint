@@ -1,5 +1,5 @@
 # webpaint
-<b>화합6팀 <a href="http://13.209.48.163/" target='_blank'>웹사이트 주소 13.209.48.163</a></b><br>
+<b>화합6팀 Server closed</b><br>
 wanderlst : 임소휘<br>
 EunJung516 : 조은정<br>
 BaekYoonjae : 백윤재<br>
